@@ -54,7 +54,7 @@ public class ReceiptService {
         String[] time = receipt.purchaseTime().split(":");
         int hour = Integer.parseInt(time[0]);
         int minute = Integer.parseInt(time[1]);
-        if ((hour == 14) || (hour == 15 && minute == 0)) points += 10;
+        if ((hour == 14 && minute != 0) || (hour == 15)) points += 10;
 
         return points;
     }
