@@ -3,6 +3,7 @@ package com.example.fetch_assignment.controller;
 import com.example.fetch_assignment.exceptions.InvalidInputException;
 import com.example.fetch_assignment.model.Receipt;
 import com.example.fetch_assignment.service.ReceiptService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class ReceiptController {
     }
 
     @PostMapping("/receipts/process")
-    public Map<String, String> processReceipt(@RequestBody Receipt receipt) {
+    public Map<String, String> processReceipt(@Valid @RequestBody Receipt receipt) {
         // TODO: validate receipt
         String id = receiptService.processReceipt(receipt);
         return Map.of("id", id);
