@@ -11,15 +11,24 @@ public class ReceiptService {
 
     private final Map<String, Integer> receiptPoints = new ConcurrentHashMap<>();
 
-    private List<Receipt> receipts = new ArrayList<>();
+    private final List<Receipt> receipts = new ArrayList<>();
 
     public String processReceipt(Receipt receipt) {
         //UUID https://docs.oracle.com/javase/8/docs/api/index.html?java/util/UUID.html
         String id = UUID.randomUUID().toString();
+        // ISSUE #1: TODO: set receipt.id to id
         int points = calculatePoints(receipt);
         receiptPoints.put(id, points);
         receipts.add(receipt);
         return id;
+    }
+
+    // will not work until I fix issue #1
+    public Receipt getReceipt(String id) {
+        for (Receipt receipt : receipts) {
+            if(receipt.id().equals(id)) return receipt;
+        }
+        return null;
     }
 
     public int getPoints(String id) {
