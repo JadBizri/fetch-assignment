@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>fetch-assignment</artifactId>
+	<artifactId>receipt-processor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>fetch-assignment</name>
+	<name>receipt-processor</name>
 	<description>Assignment for fetch job</description>
 	<url/>
 	<licenses>
