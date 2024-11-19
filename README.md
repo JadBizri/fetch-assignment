@@ -10,9 +10,6 @@ This project is a Dockerized Java Spring Boot web service that processes receipt
   - `POST /receipts/process`: Process a receipt and return a unique ID.
   - `GET /receipts/{id}/points`: Retrieve the points for a specific receipt.
 
-- **Points Rules**:  
-  The points are calculated based on rules outlined in the project documentation.
-
 ---
 
 ## Prerequisites
@@ -31,7 +28,7 @@ Before running the project, ensure you have the following installed on your syst
 Pull the pre-built image from Docker Hub:
 
 ```
-docker jadbizri/receipt-processor:latest
+docker pull jadbizri/receipt-processor:latest
 ```
 
 ### 2. Run the Docker Container
