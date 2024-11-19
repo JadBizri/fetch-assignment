@@ -24,8 +24,48 @@ public class Receipt {
         return id;
     }
 
+    public String getRetailer() {
+        return retailer;
+    }
+
+    public String getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public String getPurchaseTime() {
+        return purchaseTime;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setRetailer(String retailer) {
+        this.retailer = retailer;
+    }
+
+    public void setPurchaseDate(String purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public void setPurchaseTime(String purchaseTime) {
+        this.purchaseTime = purchaseTime;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     public static record Item (String shortDescription, String price){}
