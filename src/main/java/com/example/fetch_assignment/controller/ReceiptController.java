@@ -4,6 +4,7 @@ import com.example.fetch_assignment.model.Receipt;
 import com.example.fetch_assignment.service.ReceiptService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -15,9 +16,15 @@ public class ReceiptController {
         this.receiptService = receiptService;
     }
 
+    // gets all receipts
+    @GetMapping("/receipts")
+    public List<Receipt> getReceipts() {
+        return receiptService.getReceipts();
+    }
+
     @GetMapping("/receipts/{id}/points")
     public Map<String, Integer> getPoints(@PathVariable String id) {
-        // (OPTIONAL) TODO: validate id to be in the form of a UUID (i.e. not '1' or '2')
+        // (OPTIONAL) TODO: validate id to be in the form of a UUID (i.e. not '1' or '2') and ensure id exists
         int points = receiptService.getPoints(id);
         return Map.of("points", points);
     }

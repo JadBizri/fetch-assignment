@@ -11,16 +11,23 @@ public class ReceiptService {
 
     private final Map<String, Integer> receiptPoints = new ConcurrentHashMap<>();
 
+    private List<Receipt> receipts = new ArrayList<>();
+
     public String processReceipt(Receipt receipt) {
         //UUID https://docs.oracle.com/javase/8/docs/api/index.html?java/util/UUID.html
         String id = UUID.randomUUID().toString();
         int points = calculatePoints(receipt);
         receiptPoints.put(id, points);
+        receipts.add(receipt);
         return id;
     }
 
     public int getPoints(String id) {
         return receiptPoints.getOrDefault(id, 0);
+    }
+
+    public List<Receipt> getReceipts() {
+        return receipts;
     }
 
     private int calculatePoints(Receipt receipt) {
