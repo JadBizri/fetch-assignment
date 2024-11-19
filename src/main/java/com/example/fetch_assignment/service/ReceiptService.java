@@ -1,5 +1,6 @@
 package com.example.fetch_assignment.service;
 
+import com.example.fetch_assignment.exceptions.InvalidInputException;
 import com.example.fetch_assignment.model.Receipt;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,6 @@ public class ReceiptService {
     private final List<Receipt> receipts = new ArrayList<>();
 
     public String processReceipt(Receipt receipt) {
-        //UUID https://docs.oracle.com/javase/8/docs/api/index.html?java/util/UUID.html
         String id = UUID.randomUUID().toString();
         receipt.setId(id);
         int points = calculatePoints(receipt);
@@ -23,15 +23,9 @@ public class ReceiptService {
         return id;
     }
 
-    public Receipt getReceipt(String id) {
-        for (Receipt receipt : receipts) {
-            if(receipt.getId().equals(id)) return receipt;
-        }
-        return null;
-    }
-
     public int getPoints(String id) {
-        return receiptPoints.getOrDefault(id, 0);
+        if (receiptPoints.containsKey(id)) return receiptPoints.get(id);
+        else throw new InvalidInputException("Receipt not found: " + id);
     }
 
     public List<Receipt> getReceipts() {
