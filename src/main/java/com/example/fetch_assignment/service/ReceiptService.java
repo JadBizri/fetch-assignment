@@ -16,6 +16,10 @@ public class ReceiptService {
 
     public String processReceipt(Receipt receipt) {
         String id = UUID.randomUUID().toString();
+        //in case uuid gets duplicated because I know my luck
+        while (receiptPoints.containsKey(id)) {
+            id = UUID.randomUUID().toString();
+        }
         receipt.setId(id);
         int points = calculatePoints(receipt);
         receiptPoints.put(id, points);
